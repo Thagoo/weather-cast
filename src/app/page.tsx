@@ -1,11 +1,11 @@
 import { getCityList } from "@/lib/data";
-import { PaginatedCityData } from "@/lib/definitions";
+import { CityData, PaginatedCityData } from "@/lib/definitions";
 
 import CityTable from "@/ui/city-table";
 import { Suspense } from "react";
 
 export default async function Home() {
-  const paginatedCityData: PaginatedCityData = await getCityList();
+  const cityData: CityData[] = await getCityList();
 
   return (
     <main>
@@ -17,7 +17,7 @@ export default async function Home() {
         }
       >
         {" "}
-        <CityTable paginatedCityData={paginatedCityData} />
+        <CityTable cityData={cityData} />
       </Suspense>
     </main>
   );

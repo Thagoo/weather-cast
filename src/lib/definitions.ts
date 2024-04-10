@@ -13,7 +13,7 @@ export type CityData = {
   admin3_code: null;
   admin4_code: null;
   population: number;
-  elevation: null;
+  elevation: string;
   dem: number;
   timezone: string;
   modification_date: string;
