@@ -1,17 +1,19 @@
+import { CodeBracketIcon, HeartIcon } from "@heroicons/react/24/outline";
 import React from "react";
 
 const Footer = () => {
   return (
-    <div className="container flex justify-center">
-      <div className="text-1xl text-black text-center">
-        Made with{" "}
-        <span role="img" aria-label="heart">
-          ❤️
-        </span>{" "}
-        by Lohith
-        <p>&copy; 2024 WeatherCast</p>
+    <footer className="py-4">
+      <div
+        className="group flex items-center justify-center gap-1 text-neutral-400 dark:text-neutral-600"
+        aria-hidden={true}
+      >
+        <CodeBracketIcon className="h-5 w-5" />
+        <span>with</span>
+        <HeartIcon className="h-4 w-4 group-hover:text-red-500" />
+        <span>by Lohith</span>
       </div>
-    </div>
+    </footer>
   );
 };
 

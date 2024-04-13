@@ -1,18 +1,19 @@
 import React from "react";
-import logo from "../assets/icons/01d.png";
-
-import Search from "@/components/search";
-import Image from "next/image";
+import { CommandDialogDemo } from "./CommandDialog";
+import { ThemeToggle } from "@/ui/theme-toggle";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <div className="px-2 md:px-48 md:flex justify-between p-1">
-      <div className="flex items-center ">
-        <p className="text-2xl text-slate-800 font-semibold "> WeatherCast</p>
-      </div>
-      <div className="p-2">
-        <Search />
-      </div>
+    <div className="px-2 md:px-48 gap-4 flex flex-col md:flex-row  p-1">
+      <Link href={"/"} className="flex-grow">
+        <p className="text-2xl text-slate-900 dark:text-white font-semibold ">
+          {" "}
+          WeatherCast
+        </p>
+      </Link>
+      <CommandDialogDemo />
+      <ThemeToggle />
     </div>
   );
 };

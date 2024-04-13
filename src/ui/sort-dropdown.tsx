@@ -13,7 +13,13 @@ export const sortOptions: SortOption[] = [
   { value: "country", label: "Country" },
 ];
 
-const Sort: React.FC = ({ selectedSort, setSelectedSort }) => {
+function Sort({
+  selectedSort,
+  setSelectedSort,
+}: {
+  selectedSort: SortOption;
+  setSelectedSort: React.Dispatch<React.SetStateAction<SortOption>>;
+}) {
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     const selectedOption = sortOptions.find(
@@ -29,7 +35,7 @@ const Sort: React.FC = ({ selectedSort, setSelectedSort }) => {
       <select
         value={selectedSort.value}
         onChange={handleSelectChange}
-        className="block appearance-none w-full bg-white  px-4 py-2 pr-8 rounded  leading-tight focus:outline-none focus:shadow-outline"
+        className="block appearance-none w-full bg-background  py-2 rounded  leading-tight focus:outline-none focus:shadow-outline hover:text-accent-foreground text-sm text-muted-foreground"
       >
         {sortOptions.map((option) => (
           <option key={option.value} value={option.value}>
@@ -38,7 +44,7 @@ const Sort: React.FC = ({ selectedSort, setSelectedSort }) => {
         ))}
       </select>
 
-      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+      <div className="pointer-events-none absolute inset-y-0 right-2 flex items-center px-2 text-gray-700">
         <svg
           className="fill-current h-4 w-4"
           xmlns="http://www.w3.org/2000/svg"
@@ -49,6 +55,6 @@ const Sort: React.FC = ({ selectedSort, setSelectedSort }) => {
       </div>
     </div>
   );
-};
+}
 
 export default Sort;

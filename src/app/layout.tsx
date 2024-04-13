@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +20,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen py-4 overflow-x-hidden overflow-y-auto gap-4">
-          <Header />
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="flex flex-col min-h-screen py-4 overflow-x-hidden overflow-y-auto gap-4">
+            <Header />
 
-          <div className="flex-grow px-2 md:px-48 ">{children}</div>
-
-          <Footer />
-        </div>
+            <div className="flex-grow ">{children}</div>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

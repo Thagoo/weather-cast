@@ -19,8 +19,8 @@ export type CityData = {
   modification_date: string;
   label_en: string;
   coordinates: {
-    lon: string;
-    lat: string;
+    lon: number;
+    lat: number;
   };
 };
 
@@ -28,4 +28,59 @@ export type PaginatedCityData = {
   cityData: CityData[][];
   totalPages: number;
   pageSize: number;
+};
+
+export type Weather = {
+  coord: {
+    lon: number | null;
+    lat: number | null;
+  };
+  weather: [
+    {
+      id: number | null;
+      main: string | null;
+      description: string | null;
+      icon: string | null;
+    }
+  ];
+  base: string | null;
+  main: {
+    temp: number | null;
+    feels_like: number | null;
+    temp_min: number | null;
+    temp_max: number | null;
+    pressure: number | null;
+    humidity: number | null;
+    sea_level: number | null;
+    grnd_level: number | null;
+  };
+  visibility: number | null;
+  wind: {
+    speed: number | null;
+    deg: number | null;
+    gust: number | null;
+  };
+  clouds: {
+    all: number | null;
+  };
+  dt: number | null;
+  sys: {
+    type: number | null;
+    id: number | null;
+    country: string | null;
+    sunrise: number | null;
+    sunset: number | null;
+  };
+  timezone: number | null;
+  id: number | null;
+  name: string | null;
+  cod: number | null;
+};
+
+export type PlacesSuggestion = {
+  city: string;
+  region: string | null;
+  country: string;
+  latitude: number;
+  longitude: number;
 };
