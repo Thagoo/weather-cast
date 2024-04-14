@@ -15,6 +15,7 @@ import { useRouter } from "next/navigation";
 import { useDebouncedCallback } from "use-debounce";
 import { PlacesSuggestion } from "@/lib/definitions";
 import { MapPinIcon } from "@heroicons/react/24/outline";
+import LoadingSpinner from "@/ui/loading-ui";
 
 export function CommandDialogDemo() {
   const [open, setOpen] = useState(false);
@@ -25,7 +26,6 @@ export function CommandDialogDemo() {
 
   const fetchSuggestions = useDebouncedCallback(async () => {
     try {
-      setLoading(true);
       const suggestions = await fetch(`/api/places?city=${value}`);
       const data = await suggestions.json();
       if (data.data) {
@@ -36,7 +36,7 @@ export function CommandDialogDemo() {
       setLoading(false);
       throw new Error(error);
     }
-  }, 3000);
+  }, 1000);
 
   const handleSelect = async (lat: number, lon: number) => {
     setOpen(false);
@@ -54,6 +54,7 @@ export function CommandDialogDemo() {
   };
   useEffect(() => {
     if (value.length > 2) {
+      setLoading(true);
       fetchSuggestions();
     } else {
       setPlaces([]);
@@ -93,7 +94,9 @@ export function CommandDialogDemo() {
           disabled={false}
         />{" "}
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>
+            {loading ? <LoadingSpinner /> : "No results found."}
+          </CommandEmpty>
           <CommandItem onSelect={() => handeCurrentLocation()}>
             <MapPinIcon /> <span className="ml-2">Use Current location</span>
           </CommandItem>
