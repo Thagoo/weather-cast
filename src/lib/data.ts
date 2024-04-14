@@ -46,6 +46,23 @@ export const getforecast = async (
     throw new Error(error);
   }
 };
+export const getAirPollution = async (
+  lat: number,
+  lon: number,
+  units: string = "metric"
+) => {
+  try {
+    let url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${OPENWEATHER_API}&units=${units}`;
+
+    const response = await fetch(url, { next: { revalidate: 600 } });
+
+    const data = await response.json();
+    return data;
+  } catch (error: any) {
+    console.log(error);
+    throw new Error(error);
+  }
+};
 export const getCityList = async () => {
   try {
     const response = await fetch(`${OPENDATASOFT_API}?limit=100`);
