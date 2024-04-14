@@ -41,29 +41,25 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function deepSearch(obj: CityData[], searchTerm: string) {
-  const searchKey = searchTerm.toLowerCase();
-  const data: CityData[] = [];
-  function searchNested(currentObj: CityData): CityData[] {
-    for (const key in currentObj) {
-      if (currentObj.hasOwnProperty(key)) {
-        const value = currentObj[key];
+export function deepSearch(data: CityData[], searchTerm: string) {
+  const lowercaseTerm = searchTerm.toLowerCase();
+  const result = [];
 
-        if (typeof value === "object" && value !== null) {
-          const result = searchNested(value);
-          if (result) {
-            return result;
-          }
-        } else if (String(value).toLowerCase().includes(searchKey)) {
-          data.push(currentObj);
-          return data;
+  for (const obj of data) {
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        const value = obj[key];
+        if (
+          value !== null &&
+          value.toString().toLowerCase().includes(lowercaseTerm)
+        ) {
+          result.push(obj);
+          break;
         }
       }
     }
-    return data;
   }
-
-  return searchNested(obj);
+  return result;
 }
 
 export function convertToDate(
