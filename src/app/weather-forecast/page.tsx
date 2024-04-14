@@ -14,12 +14,18 @@ export default async function WeatherForecast({
   searchParams: {
     lat: number;
     lon: number;
+    units: "metric" | "imperial" | "standard";
   };
 }) {
-  const { lat, lon } = searchParams;
-  const weather = await getWeather(lat, lon);
-  const forecast = await getforecast(lat, lon);
-  const airPollution = await getAirPollution(lat, lon);
+  const { lat, lon, units } = searchParams;
+  let unitSystem =
+    units === "standard" || units === "imperial" || units === "metric"
+      ? units
+      : "metric";
+
+  const weather = await getWeather(lat, lon, unitSystem);
+  const forecast = await getforecast(lat, lon, unitSystem);
+  const airPollution = await getAirPollution(lat, lon, unitSystem);
 
   if (!weather.main) {
     throw new Error(weather.message);
@@ -27,7 +33,11 @@ export default async function WeatherForecast({
   return (
     <div className="flex flex-col gap-4 px-2 md:px-48">
       <div className="flex flex-col md:flex-row justify-between gap-4">
-        <CurrentWeather weather={weather} airPollution={airPollution.list[0]} />
+        <CurrentWeather
+          weather={weather}
+          units={unitSystem}
+          airPollution={airPollution.list[0]}
+        />
 
         <Forecast forecast={forecast} />
       </div>

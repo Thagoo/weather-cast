@@ -2,18 +2,30 @@ import React from "react";
 import { AirPollutionType, Weather } from "@/lib/definitions";
 import { Card, CardContent, CardHeader, CardTitle } from "@/ui/card";
 import Image from "next/image";
-import { MapPinIcon } from "@heroicons/react/24/outline";
+import { EyeDropperIcon, MapPinIcon } from "@heroicons/react/24/outline";
 import { convertToTime } from "@/lib/utils";
 import Divider from "./divider";
 import AirPollution from "./air_pollution";
+import { MoveDown } from "lucide-react";
+import UnitsMenu from "./units-menu";
 
 export default function CurrentWeather({
   weather,
+  units,
   airPollution,
 }: {
   weather: Weather;
+  units: string;
   airPollution: AirPollutionType;
 }) {
+  const unitsSystem = {
+    temp: units === "metric" ? "C" : "F",
+    windSpeed: units === "metric" ? "KM/H" : "M/H",
+    pressure:
+      units === "metric" ? "hPa" : units === "imperial" ? "psi" : "inHg",
+    visibility: units === "metric" ? "KM" : "M",
+  };
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -23,6 +35,7 @@ export default function CurrentWeather({
           <span className="ml-auto ">
             {convertToTime(weather.timezone as number, weather.dt as number)}
           </span>
+          <UnitsMenu />
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -39,12 +52,13 @@ export default function CurrentWeather({
               />
 
               <div className="flex flex-col">
-                <h1 className="font-normal text-8xl relative">
+                <h1 className="font-normal text-7xl relative">
                   {Math.floor(weather.main.temp as number)}&#176;
-                  <span className="absolute right-0 bottom-2 text-6xl opacity-50 font-light">
-                    c
+                  <span className="text-4xl opacity-50 font-light">
+                    {unitsSystem.temp}
                   </span>
                 </h1>
+
                 <p className="font-extralight text-sm opacity-80">
                   H: {Math.floor(weather.main.temp_max as number)}&#176; L:{" "}
                   {Math.floor(weather.main.temp_min as number)}
@@ -63,18 +77,23 @@ export default function CurrentWeather({
               desc={` ${weather.main.feels_like}°`}
             />
             <Divider />
-            <SideLeaves title="Wind" desc={`ESE ${weather.wind.speed} KM/H`} />
+            <SideLeaves
+              title="Wind"
+              desc={`ESE ${weather.wind.speed} ${unitsSystem.windSpeed}`}
+            />
             <Divider />
             <SideLeaves title="Humidity" desc={`${weather.main.humidity}°`} />
             <Divider />
             <SideLeaves
               title="Pressure"
-              desc={`${weather.main.pressure} hPa`}
+              desc={`${weather.main.pressure} ${unitsSystem.pressure}`}
             />
             <Divider />
             <SideLeaves
               title="Visibility"
-              desc={`${(weather.visibility as number) / 1000} KM`}
+              desc={`${(weather.visibility as number) / 1000} ${
+                unitsSystem.visibility
+              }`}
             />
             <Divider />
             <SideLeaves
