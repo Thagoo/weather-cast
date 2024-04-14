@@ -1,9 +1,9 @@
 import { convertToDate } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import Image from "next/image";
-import { Forecast } from "@/lib/definitions";
+import { ForecastType } from "@/lib/definitions";
 
-export default function Forecast({ forecast }: { forecast: Forecast }) {
+export default function Forecast({ forecast }: { forecast: ForecastType }) {
   return (
     <>
       <Card className="h-fit  md:w-3/5">

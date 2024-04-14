@@ -1,4 +1,5 @@
 export type CityData = {
+  [key: string]: any;
   geoname_id: string;
   name: string;
   ascii_name: string;
@@ -77,7 +78,7 @@ export type Weather = {
   cod: number | null;
 };
 
-export type Forecast = {
+export type ForecastType = {
   list: [
     {
       dt: number;

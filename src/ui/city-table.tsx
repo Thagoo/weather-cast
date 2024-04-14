@@ -90,6 +90,7 @@ export default function CityTable({ cityData }: { cityData: CityData[] }) {
           <tbody className=" overflow-auto">
             {data.map((city, i) => (
               <tr
+                key={i}
                 className="border-b  bg-background border border-accent hover:bg-accent/50 cursor-pointer"
                 onClick={(e) =>
                   handleWeather(e, city.coordinates.lat, city.coordinates.lon)

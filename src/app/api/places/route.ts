@@ -1,5 +1,5 @@
-export const GET = async (req) => {
-  const searchParams = req.nextUrl.searchParams;
+export const GET = async (req: Request) => {
+  const { searchParams } = new URL(req.url);
   const city = searchParams.get("city");
 
   const RAPID_HOST = process.env.RAPID_API_HOST;

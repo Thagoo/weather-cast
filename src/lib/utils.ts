@@ -1,4 +1,4 @@
-import { CityData, Forecast, PaginatedCityData } from "./definitions";
+import { CityData, ForecastType, PaginatedCityData } from "./definitions";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -48,6 +48,7 @@ export function deepSearch(data: CityData[], searchTerm: string) {
   for (const obj of data) {
     for (const key in obj) {
       if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        console.log(key);
         const value = obj[key];
         if (
           value !== null &&
@@ -87,8 +88,8 @@ export function convertToTime(timezone: number, dt: number): string | null {
   return timeString;
 }
 
-export function groupForecastByDate(data: Forecast) {
-  const uniqueDates = {};
+export function groupForecastByDate(data: ForecastType) {
+  const uniqueDates: { [key: string]: any } = {};
   data.list.forEach((item) => {
     const date = item.dt_txt.split(" ")[0]; // Extracting date from dt_txt
     if (!uniqueDates[date]) {
