@@ -77,6 +77,44 @@ export type Weather = {
   cod: number | null;
 };
 
+export type Forecast = {
+  list: [
+    {
+      dt: number;
+      dt_txt: string;
+      main: {
+        temp_min: number;
+        temp_max: number;
+      };
+      weather: [
+        {
+          icon: string;
+          description: string;
+        }
+      ];
+    }
+  ];
+  city: {
+    timezone: number;
+  };
+};
+export type AirPollutionType = {
+  dt: number;
+  main: {
+    aqi: 1 | 2 | 3 | 4 | 5;
+  };
+  components: {
+    co: number;
+    no: number;
+    no2: number;
+    o3: number;
+    so2: number;
+    pm2_5: number;
+    pm10: number;
+    nh3: number;
+  };
+};
+
 export type PlacesSuggestion = {
   city: string;
   region: string | null;

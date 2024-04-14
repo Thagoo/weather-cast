@@ -1,4 +1,4 @@
-import { CityData, PaginatedCityData } from "./definitions";
+import { CityData, Forecast, PaginatedCityData } from "./definitions";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -64,4 +64,40 @@ export function deepSearch(obj: CityData[], searchTerm: string) {
   }
 
   return searchNested(obj);
+}
+
+export function convertToDate(
+  timezone: number,
+  dt: number,
+  weekdayFormat: "short" | "long"
+): string {
+  let utc_time = new Date(dt * 1000);
+  let local_time = new Date(utc_time.getTime() + timezone * 1000);
+
+  const options = { weekday: weekdayFormat };
+  const dateFormatter = new Intl.DateTimeFormat("UTC", options);
+
+  return dateFormatter.format(local_time);
+}
+
+export function convertToTime(timezone: number, dt: number): string | null {
+  if (!timezone || !dt) {
+    return null;
+  }
+  let utc_time = new Date(dt * 1000);
+  let local_time = new Date(utc_time.getTime() + timezone * 1000);
+  const timeString = utc_time.toLocaleTimeString();
+
+  return timeString;
+}
+
+export function groupForecastByDate(data: Forecast) {
+  const uniqueDates = {};
+  data.list.forEach((item) => {
+    const date = item.dt_txt.split(" ")[0]; // Extracting date from dt_txt
+    if (!uniqueDates[date]) {
+      uniqueDates[date] = item;
+    }
+  });
+  return Object.values(uniqueDates);
 }
