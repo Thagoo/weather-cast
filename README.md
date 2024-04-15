@@ -1,9 +1,9 @@
 ## Project Overview
 
-WeaterCast
+# WeaterCast
 
 ## Live Demo
-
+https://weather-cast-sooty.vercel.app/
 ## Project Implementation
 
 The web page has been developed using NextJS and TailwindCSS.
