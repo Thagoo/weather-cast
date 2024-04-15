@@ -8,8 +8,8 @@ import { ThemeProvider } from "next-themes";
 const jost = Jost({ weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Weather forecast",
-  description: "Weather Forecast Web Application",
+  title: { template: `%s | WeatherCast`, default: "WeatherCast" },
+  description: "WeatherCast is Weather Forecasting site",
 };
 
 export default async function RootLayout({
