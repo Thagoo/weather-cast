@@ -3,7 +3,9 @@
 # WeaterCast
 
 ## Live Demo
+
 https://weather-cast-sooty.vercel.app/
+
 ## Project Implementation
 
 The web page has been developed using NextJS and TailwindCSS.
@@ -82,3 +84,15 @@ npm start
 This will start the respective server, and you can view the webpage by accessing http://localhost:3000 in your browser.
 
 Thank you for checking out my project!
+
+## Screenshots
+
+[url=https://postimg.cc/JDkNdCGZ][img]https://i.postimg.cc/JDkNdCGZ/Screen-Shot-2024-04-15-at-12-34-32.png[/img][/url]
+
+[url=https://postimg.cc/DJ9g2ytx][img]https://i.postimg.cc/DJ9g2ytx/Screen-Shot-2024-04-15-at-12-35-28.png[/img][/url]
+
+[url=https://postimg.cc/WdY0N1Z0][img]https://i.postimg.cc/WdY0N1Z0/Screenshot-2024-04-15-at-12-33-18-Weather-Cast.png[/img][/url]
+
+[url=https://postimg.cc/JHCbfYkg][img]https://i.postimg.cc/JHCbfYkg/Screenshot-2024-04-15-at-12-33-30-Weather-Cast.png[/img][/url]
+
+[url=https://postimg.cc/VST9RkLz][img]https://i.postimg.cc/VST9RkLz/Screenshot-2024-04-15-at-12-35-05-New-York-15-84-C-Weather-Cast.png[/img][/url]
