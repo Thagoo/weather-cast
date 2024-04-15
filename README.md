@@ -2,6 +2,15 @@
 
 # WeaterCast
 
+## Screenshots
+
+![Screenshot 2024-04-15 at 12-35-05 New York 15 84°C WeatherCast](https://github.com/Thagoo/weather-cast/assets/47388359/5afd9c85-f3f3-4012-aaed-af268ef40b7c)
+![Screenshot 2024-04-15 at 12-33-18 WeatherCast](https://github.com/Thagoo/weather-cast/assets/47388359/5fbfb5d1-e083-4eef-9e81-65bfcf90f0b4)
+![Screenshot 2024-04-15 at 12-33-30 WeatherCast](https://github.com/Thagoo/weather-cast/assets/47388359/f74ad894-fa31-4a06-9e5a-415924d74a5c)
+![Screen Shot 2024-04-15 at 12 34 32](https://github.com/Thagoo/weather-cast/assets/47388359/7d4c3f31-4811-48a9-8019-3bd7c37b4719)
+
+<img width="200" alt="screenshot" src="https://github.com/Thagoo/weather-cast/assets/47388359/c281e16d-4453-4b52-87dc-e4dd1b955298" />
+
 ## Live Demo
 
 https://weather-cast-sooty.vercel.app/
@@ -84,15 +93,3 @@ npm start
 This will start the respective server, and you can view the webpage by accessing http://localhost:3000 in your browser.
 
 Thank you for checking out my project!
-
-## Screenshots
-
-[url=https://postimg.cc/JDkNdCGZ][img]https://i.postimg.cc/JDkNdCGZ/Screen-Shot-2024-04-15-at-12-34-32.png[/img][/url]
-
-[url=https://postimg.cc/DJ9g2ytx][img]https://i.postimg.cc/DJ9g2ytx/Screen-Shot-2024-04-15-at-12-35-28.png[/img][/url]
-
-[url=https://postimg.cc/WdY0N1Z0][img]https://i.postimg.cc/WdY0N1Z0/Screenshot-2024-04-15-at-12-33-18-Weather-Cast.png[/img][/url]
-
-[url=https://postimg.cc/JHCbfYkg][img]https://i.postimg.cc/JHCbfYkg/Screenshot-2024-04-15-at-12-33-30-Weather-Cast.png[/img][/url]
-
-[url=https://postimg.cc/VST9RkLz][img]https://i.postimg.cc/VST9RkLz/Screenshot-2024-04-15-at-12-35-05-New-York-15-84-C-Weather-Cast.png[/img][/url]
