@@ -81,11 +81,12 @@ export function convertToTime(timezone: number, dt: number): string | null {
   if (!timezone || !dt) {
     return null;
   }
-  let utc_time = new Date(dt * 1000);
-  let local_time = new Date(utc_time.getTime() + timezone * 1000);
-  const timeString = utc_time.toLocaleTimeString();
+  let utc_time = new Date((dt + timezone) * 1000);
 
-  return timeString;
+  const utc = utc_time.toLocaleTimeString("en-US", {
+    timeZone: "UTC",
+  });
+  return utc;
 }
 
 export function groupForecastByDate(data: ForecastType) {
